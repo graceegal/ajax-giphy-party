@@ -2,7 +2,11 @@
 
 console.log("Let's get this party started!");
 
-/**  populateGiphy */
+/**  populateGiphy:
+ *
+ * searches giphy API for keyword from search input field and
+ * populates a gif on the page
+ */
 async function populateGiphy(evt) {
   evt.preventDefault();
 
@@ -25,5 +29,15 @@ async function populateGiphy(evt) {
 
 }
 
-//TODO: check to see if "submit" event listener works
 $("#submit-btn").on("click", populateGiphy);
+
+
+/** removeGifs:
+ *
+ * invoked when remove button is clicked
+ * removes all gifs from the page */
+function removeGifs() {
+  $("#returned-gifs").empty();
+}
+
+$("#remove-btn").on("click", removeGifs)
