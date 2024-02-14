@@ -2,7 +2,7 @@
 
 console.log("Let's get this party started!");
 
-/**  */
+/**  populateGiphy */
 async function populateGiphy(evt) {
   evt.preventDefault();
 
@@ -11,13 +11,17 @@ async function populateGiphy(evt) {
 
   const params = new URLSearchParams({
     q: searchTerm,
-    api_key: "MiTgPL3hZnfub118MSIbA77M5csCZijP"});
+    api_key: "MiTgPL3hZnfub118MSIbA77M5csCZijP"
+  });
 
   const response = await fetch(`http://api.giphy.com/v1/gifs/search?${params}`);
 
-  const data = await response.json();
+  const gifData = await response.json();
 
-  console.log("giphy resp=", response, "data=", data);
+  const gifUrl = gifData.data[0].images.original.url;
+
+  $("<img>").attr("src", gifUrl).appendTo("#returned-gifs");
+  //$("#returned-gifs").append("<img>", { src: `${gifUrl}` });
 
 }
 
